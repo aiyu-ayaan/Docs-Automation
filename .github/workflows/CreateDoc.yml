@@ -53,9 +53,17 @@ jobs:
       - name: Copy docs to doc/docs/code
         run: |
           ls -la
-          mkdir -p docs
-          cp -r docs/* doc
-          cp -r build/dokka/* doc/docs/code
+          mkdir -p copyDoc
+          cp mkdocs.yml copyDoc
+          cp -r docs/* copyDoc
+          cp -r build/dokka/* copyDoc/docs/code
+          ls -la copyDoc
+      - name: Upload docs
+        uses: actions/upload-artifact@v2
+        with:
+          name: copyDoc
+          path: copyDoc
+          retention-days: 1
   deploy:
     runs-on: ubuntu-latest
     needs: copycode
