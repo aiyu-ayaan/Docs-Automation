@@ -9,10 +9,12 @@ jobs:
   Generated:
     runs-on: ubuntu-latest
     steps:
-      - id: fetch-latest-release
+      - name: Get latest release
+        id: latest_release
         uses: kaliber5/action-get-release@v1
         with:
-          github_token: ${{ github.token }}
+          token: ${{ github.token }}
+          latest: true
       - name: Print Details
         run: |
-          echo ${{ steps.fetch-latest-release.outputs.tag_name }}
+          echo ${{ steps.latest_release.outputs.tag_name }}
