@@ -57,7 +57,7 @@ jobs:
           cp mkdocs.yml copyDoc
           cp -r docs/* copyDoc
           mkdir -p copyDoc/docs/code
-          cp -r html copyDoc/docs/code
+          cp -r html/* copyDoc/docs/code
           ls -la copyDoc
       - name: Upload docs
         uses: actions/upload-artifact@v2
@@ -70,6 +70,10 @@ jobs:
     needs: copycode
     permissions: write-all
     steps:
+      - name: Download docs
+        uses: actions/download-artifact@v3
+        with:
+          name: copyDoc
       - uses: actions/checkout@v4
       - name: Configure Git Credentials
         run: |
@@ -86,11 +90,9 @@ jobs:
           restore-keys: |
             mkdocs-material-
       - run: |
-          cd ./docs
           pip install mkdocs-material
           pip install mkdocs-glightbox
       - run: |
-          cd ./docs
           mkdocs gh-deploy --force
     
 
