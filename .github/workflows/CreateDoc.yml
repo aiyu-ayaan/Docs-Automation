@@ -2,15 +2,6 @@ name: Generate Docs and Deploy to GitHub Pages
 
 on:
   workflow_dispatch:
-    inputs:
-      stable:
-        description: 'Current App Stable Version'
-        required: true
-        default: 'v5.0.2'
-      pre_release:
-        description: 'Current App Pre-Release Version'
-        required: true
-        default: 'v5.0.3-beta'
 defaults:
   run:
     working-directory: .
@@ -98,10 +89,27 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: copyDoc
+      - uses: joutvhu/get-release@v1
+        id: latest_release
+        with:
+          latest: true
+          pattern: 'v.+'
+          prerelease: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.ACCOUNT_TOKEN }}
+      - uses: joutvhu/get-release@v1
+        id: pre_release
+        with:
+          latest: true
+          pattern: 'pre-v.+'
+          prerelease: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.ACCOUNT_TOKEN }}
+
       - run: |
           cd generated
-          sed -i -E 's/stable.+/stable: ${{ github.event.inputs.stable }}/' mkdocs.yml 
-          sed -i -E 's/pre_release.+/pre_release: ${{ github.event.inputs.pre_release }}/' mkdocs.yml 
+          sed -i -E 's/stable.+/stable: ${{ steps.latest_release.outputs.tag_name }}/' mkdocs.yml 
+          sed -i -E 's/pre_release.+/pre_release: ${{ steps.pre_release.outputs.tag_name }}/' mkdocs.yml 
           echo "stable: ${{ github.event.inputs.stable }}"
           echo "pre_release: ${{ github.event.inputs.pre_release }}"
           cat mkdocs.yml
