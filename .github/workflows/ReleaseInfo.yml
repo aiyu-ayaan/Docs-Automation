@@ -18,4 +18,4 @@ jobs:
           type: "stable"
       - name: Get latest release of NodeJS
         run: |
-          ${{ steps.node_release.outputs.release }}
+          echo ${{ steps.node_release.outputs.release }}
