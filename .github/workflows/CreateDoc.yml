@@ -39,7 +39,7 @@ jobs:
 
   copycode:
     runs-on: ubuntu-latest
-    permissions: read-all
+    permissions: write-all
     needs: build
     steps:
       - name: Download docs
@@ -74,6 +74,9 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: copyDoc
+      - name: Copy docs to doc/docs/code
+        run: |
+          cp -r copyDoc/* .
       - uses: actions/checkout@v4
       - name: Configure Git Credentials
         run: |
