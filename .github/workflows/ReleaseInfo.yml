@@ -13,9 +13,9 @@ jobs:
         with:
           latest: true
           # Tag name start with `v`
-          pattern: 'v.+'
+          pattern: 'pre-v.+'
           # Including pre-release
-          prerelease: false
+          prerelease: true
         env:
           GITHUB_TOKEN: ${{ secrets.ACCOUNT_TOKEN }}
       - name: Print Details
