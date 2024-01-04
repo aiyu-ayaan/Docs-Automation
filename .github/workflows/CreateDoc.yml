@@ -70,13 +70,6 @@ jobs:
     needs: copycode
     permissions: write-all
     steps:
-      - name: Download docs
-        uses: actions/download-artifact@v3
-        with:
-          name: copyDoc
-      - name: Copy generated to doc/docs/code
-        run: |
-          ls -la
       - uses: actions/checkout@v4
       - name: Configure Git Credentials
         run: |
@@ -92,12 +85,16 @@ jobs:
           path: .cache
           restore-keys: |
             mkdocs-material-
-      - run: |
+      - name: Download docs
+        uses: actions/download-artifact@v3
+        with:
+          name: copyDoc
+      - name: Deploy to GitHub Pages
+        run: |
+          ls -la
           cd generated
           pip install mkdocs-material
           pip install mkdocs-glightbox
-      - run: |
-          cd generated
           mkdocs gh-deploy --force
 
 
