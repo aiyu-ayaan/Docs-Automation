@@ -100,11 +100,10 @@ jobs:
           name: copyDoc
       - run: |
           cd generated
-          cat mkdocs.yml
           echo "stable: ${{ github.event.inputs.stable }}"
           echo "pre_release: ${{ github.event.inputs.pre_release }}"
-          sed -i 's/stable.+/stable: ${{ github.event.inputs.stable }}/' mkdocs.yml
-          sed -i 's/pre_release:.+/pre_release: ${{ github.event.inputs.pre_release }}/' mkdocs.yml
+          sed -E 's/stable.+/stable: ${{ github.event.inputs.stable }}/' mkdocs.yml
+          sed -E 's/pre_release:.+/pre_release: ${{ github.event.inputs.pre_release }}/' mkdocs.yml
           cat mkdocs.yml
           pip install mkdocs-material
           pip install mkdocs-glightbox
