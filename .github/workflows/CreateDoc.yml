@@ -76,6 +76,7 @@ jobs:
           name: copyDoc
       - name: Copy generated to doc/docs/code
         run: |
+          ls -la
           cp -r generated/* docs
       - uses: actions/checkout@v4
       - name: Configure Git Credentials
