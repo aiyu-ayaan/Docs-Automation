@@ -74,7 +74,7 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: copyDoc
-        run: |
+      - run: |
           ls -la
           cp -r generated/* docs
           ls -la docs
@@ -96,6 +96,7 @@ jobs:
           restore-keys: |
             mkdocs-material-
       - run: |
+          ls -la docs/code
           cd docs
           pip install mkdocs-material
           pip install mkdocs-glightbox
