@@ -30,6 +30,12 @@ jobs:
           name: kt-docs
           path: build/dokka
           retention-days: 1
+      - name: Upload MkDocs
+        uses: actions/upload-artifact@v2
+        with:
+          name: mkdocs
+          path: docs
+          retention-days: 1
 
   copycode:
     runs-on: ubuntu-latest
@@ -40,10 +46,15 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: kt-docs
+      - name: Download MkDocs
+        uses: actions/download-artifact@v3
+        with:
+          name: mkdocs
       - name: Copy docs to doc/docs/code
         run: |
-          ls -la 
-          cp -r html/*  ${{ inputs.working_directory }}/docs/docs/code
+          mkdir -p docs
+          cp -r docs/* doc
+          cp -r build/dokka/* doc/docs/code
   deploy:
     runs-on: ubuntu-latest
     needs: copycode
