@@ -14,12 +14,12 @@ jobs:
         id: last_release
         uses: InsonusK/get-latest-release@v1.0.1
         with:
-          myToken: https://github.com/aiyu-ayaan/Docs-Automation/releases
-          exclude_types: "release"
+          myToken: ${{ github.token }}
           view_top: 1
 
       - name: "Print result"
         run: |
+          echo ${{ github.token }}
           echo "id: ${{ steps.last_release.outputs.id }}"
           echo "name: ${{ steps.last_release.outputs.name }}"
           echo "tag_name: ${{ steps.last_release.outputs.tag_name }}"
