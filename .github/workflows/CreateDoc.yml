@@ -1,7 +1,9 @@
 name: Generate Docs and Deploy to GitHub Pages
 
 on:
-  workflow_dispatch:
+  push:
+    branches:
+      - master
 defaults:
   run:
     working-directory: .
@@ -108,8 +110,9 @@ jobs:
 
       - run: |
           cd generated
+          v=$(echo ${{ steps.pre_release.outputs.tag_name }} | cut -c 4-)
           sed -i -E 's/stable.+/stable: ${{ steps.latest_release.outputs.tag_name }}/' mkdocs.yml 
-          sed -i -E 's/pre_release.+/pre_release: ${{ steps.pre_release.outputs.tag_name }}/' mkdocs.yml 
+          sed -i -E "s/pre_release.+/pre_release: $v /" mkdocs.yml 
           echo "stable: ${{ github.event.inputs.stable }}"
           echo "pre_release: ${{ github.event.inputs.pre_release }}"
           cat mkdocs.yml
