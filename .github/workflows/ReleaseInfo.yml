@@ -9,13 +9,11 @@ jobs:
   Generated:
     runs-on: ubuntu-latest
     steps:
-      - name: Get latest release
-        id: latest_release
-        uses: kaliber5/action-get-release@v1
+      - uses: cardinalby/git-get-release-action@v1
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
         with:
-          token: ${{ github.token }}
-          latest: true
-          tag_name: pre*
+          prerelease : true
       - name: Print Details
         run: |
           echo ${{ steps.latest_release.outputs.tag_name }}
