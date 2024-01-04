@@ -1,5 +1,9 @@
 package org.atech
 
+/**
+ * Main function
+ * * @author aiyu
+ */
 fun main() {
     val a = 5
     val b = 2

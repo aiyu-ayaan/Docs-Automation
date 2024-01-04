@@ -17,6 +17,21 @@ theme:
       accent: teal
 
 nav:
-    - Home: index.md
-    - CodeReference: code/index.html
+  - Home: index.md
+  - CodeReference: code/index.html
 
+repo_url: https://github.com/aiyu-ayaan/Docs-Automation
+repo_name: Docs-Automation
+
+plugins:
+  - markdownextradata: { }
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://www.github.com/aiyu-ayaan
+    - icon: fontawesome/brands/instagram
+      link: https://www.instagram.com/aiyu.exe_
+    - icon: fontawesome/brands/linkedin
+      link: https://www.linkedin.com/in/aiyu/
+  unit_price: 1
