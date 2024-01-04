@@ -100,8 +100,8 @@ jobs:
           name: copyDoc
       - run: |
           cd generated
-          sed -i -E 's/stable.+/stable: ${{ github.event.inputs.stable }}/' mkdocs.yml > mkdocs.yml
-          sed -i -E 's/pre_release.+/pre_release: ${{ github.event.inputs.pre_release }}/' mkdocs.yml > mkdocs.yml
+          sed -i -E 's/stable.+/stable: ${{ github.event.inputs.stable }}/' mkdocs.yml 
+          sed -i -E 's/pre_release.+/pre_release: ${{ github.event.inputs.pre_release }}/' mkdocs.yml 
           echo "stable: ${{ github.event.inputs.stable }}"
           echo "pre_release: ${{ github.event.inputs.pre_release }}"
           cat mkdocs.yml
