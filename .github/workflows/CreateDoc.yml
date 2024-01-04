@@ -53,11 +53,11 @@ jobs:
       - name: Copy docs to doc/docs/code
         run: |
           ls -la
-          mkdir -p copyDoc
-          cp mkdocs.yml copyDoc
-          cp -r docs/* copyDoc
-          mkdir -p copyDoc/docs/code
-          cp -r html/* copyDoc/docs/code
+          mkdir -p copyDoc/generated
+          cp mkdocs.yml copyDoc/generated
+          cp -r docs/* copyDoc/generated
+          mkdir -p copyDoc/generated/docs/code
+          cp -r html/* copyDoc/generated/docs/code
           ls -la copyDoc
       - name: Upload docs
         uses: actions/upload-artifact@v2
@@ -74,9 +74,9 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: copyDoc
-      - name: Copy docs to doc/docs/code
+      - name: Copy generated to doc/docs/code
         run: |
-          cp -r copyDoc/* .
+          cp -r generated/* docs
       - uses: actions/checkout@v4
       - name: Configure Git Credentials
         run: |
@@ -93,10 +93,11 @@ jobs:
           restore-keys: |
             mkdocs-material-
       - run: |
+          cd docs
           pip install mkdocs-material
           pip install mkdocs-glightbox
       - run: |
-          ls -la
+          cd docs
           mkdocs gh-deploy --force
 
 
