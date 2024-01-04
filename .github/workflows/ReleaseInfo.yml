@@ -9,6 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: joutvhu/get-release@v1
+        id: latest_release
         with:
           latest: true
           # Tag name start with `v`
