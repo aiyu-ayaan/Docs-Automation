@@ -90,7 +90,6 @@ jobs:
           restore-keys: |
             mkdocs-material-
       - run: |
-          cd generated
           ls -la
           cp -r generated/* docs
           ls -la docs
