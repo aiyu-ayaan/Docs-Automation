@@ -100,16 +100,16 @@ jobs:
           name: copyDoc
       - run: |
           cd generated
-          echo "stable: ${{ github.event.inputs.stable }}"
-          echo "pre_release: ${{ github.event.inputs.pre_release }}"
-          sed -E 's/stable.+/stable: ${{ github.event.inputs.stable }}/' mkdocs.yml
-          sed -E 's/pre_release:.+/pre_release: ${{ github.event.inputs.pre_release }}/' mkdocs.yml
-          cat mkdocs.yml
           pip install mkdocs-material
           pip install mkdocs-glightbox
           pip install mkdocs-markdownextradata-plugin
       - run: |
           cd generated
+          sed -E 's/stable.+/stable: ${{ github.event.inputs.stable }}/' mkdocs.yml
+          sed -E 's/pre_release.+/pre_release: ${{ github.event.inputs.pre_release }}/' mkdocs.yml
+          echo "stable: ${{ github.event.inputs.stable }}"
+          echo "pre_release: ${{ github.event.inputs.pre_release }}"
+          cat mkdocs.yml
           mkdocs gh-deploy --force
 
 
