@@ -38,6 +38,8 @@ jobs:
       - name: Copy docs to doc/docs/code
         run: |
           ls -la 
+          cd ./ 
+          ls -la
           cp -r html/* ./docs/docs/code
     #  deploy:
     #    runs-on: ubuntu-latest
