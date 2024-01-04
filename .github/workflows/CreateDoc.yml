@@ -105,8 +105,8 @@ jobs:
           pip install mkdocs-markdownextradata-plugin
       - run: |
           cd generated
-          sed -E 's/stable.+/stable: ${{ github.event.inputs.stable }}/' mkdocs.yml > mkdocs.yml
-          sed -E 's/pre_release.+/pre_release: ${{ github.event.inputs.pre_release }}/' mkdocs.yml > mkdocs.yml
+          sed -i -E 's/stable.+/stable: ${{ github.event.inputs.stable }}/' mkdocs.yml > mkdocs.yml
+          sed -i -E 's/pre_release.+/pre_release: ${{ github.event.inputs.pre_release }}/' mkdocs.yml > mkdocs.yml
           echo "stable: ${{ github.event.inputs.stable }}"
           echo "pre_release: ${{ github.event.inputs.pre_release }}"
           cat mkdocs.yml
