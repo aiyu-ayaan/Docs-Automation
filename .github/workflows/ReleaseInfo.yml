@@ -14,7 +14,7 @@ jobs:
         uses: kaliber5/action-get-release@v1
         with:
           token: ${{ github.token }}
-          latest: true
+          latest: false
       - name: Print Details
         run: |
           echo ${{ steps.latest_release.outputs.tag_name }}
