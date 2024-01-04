@@ -93,7 +93,7 @@ jobs:
           pip install mkdocs-material
           pip install mkdocs-glightbox
       - run: |
+          ls -la
           mkdocs gh-deploy --force
-    
 
 
