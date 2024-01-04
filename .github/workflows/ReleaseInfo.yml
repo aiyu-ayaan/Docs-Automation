@@ -9,12 +9,15 @@ jobs:
   Generated:
     runs-on: ubuntu-latest
     steps:
-      - uses: cardinalby/git-get-release-action@v1
-        env:
-          GITHUB_TOKEN: ${{ github.token }}
-          tag: v1
+      - uses: joutvhu/get-release@v1
         with:
-          prerelease: true
+          latest: true
+          # Tag name start with `v`
+          pattern: '^v.*'
+          # Including pre-release
+          prerelease: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.ACCOUNT_TOKEN }}
       - name: Print Details
         run: |
           echo ${{ steps.latest_release.outputs.tag_name }}
