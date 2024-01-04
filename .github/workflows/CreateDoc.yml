@@ -1,9 +1,6 @@
 name: Generate Docs and Deploy to GitHub Pages
 
-on:
-  push:
-    branches:
-      - master
+on: workflow_dispatch
 
 jobs:
   build:
@@ -37,6 +34,7 @@ jobs:
           name: kt-docs
       - name: Cody docs to doc/docs/code
         run: |
+          ls -la
           echo kt-docs
           cp -r html docs/docs/code
   deploy:
