@@ -32,7 +32,7 @@ jobs:
     needs: build
     steps:
       - name: Download docs
-        uses: actions/download-artifacts@v3
+        uses: actions/download-artifact@v3
         with:
           name: kt-docs
       - name: Cody docs to doc/docs/code
