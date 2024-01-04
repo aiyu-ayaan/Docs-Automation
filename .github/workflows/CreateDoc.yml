@@ -74,6 +74,12 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: copyDoc
+        run: |
+          ls -la
+          cp -r generated/* docs
+          ls -la docs
+          ls -la docs/code
+
       - uses: actions/checkout@v4
       - name: Configure Git Credentials
         run: |
@@ -89,11 +95,6 @@ jobs:
           path: .cache
           restore-keys: |
             mkdocs-material-
-      - run: |
-          ls -la
-          cp -r generated/* docs
-          ls -la docs
-          ls -la docs/code
       - run: |
           cd docs
           pip install mkdocs-material
