@@ -56,7 +56,7 @@ jobs:
           mkdir -p copyDoc
           cp mkdocs.yml copyDoc
           cp -r docs/* copyDoc
-          cp -r build/dokka/* copyDoc/docs/code
+          cp -r html copyDoc/docs/code
           ls -la copyDoc
       - name: Upload docs
         uses: actions/upload-artifact@v2
