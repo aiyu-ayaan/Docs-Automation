@@ -31,6 +31,7 @@ jobs:
 
   copycode:
     runs-on: ubuntu-latest
+    permissions: read-all
     needs: build
     steps:
       - name: Download docs
@@ -39,7 +40,7 @@ jobs:
           name: kt-docs
       - name: Copy docs to doc/docs/code
         run: |
-          ls -la ./docs
+          ls -la 
           cp -r html/* ../Docs-Automation/docs/docs/code
   deploy:
     runs-on: ubuntu-latest
