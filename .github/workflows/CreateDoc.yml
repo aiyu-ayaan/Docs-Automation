@@ -37,7 +37,8 @@ jobs:
           name: kt-docs
       - name: Cody docs to doc/docs/code
         run: |
-          echo kt-docs
+          cd ./docs
+          ls -la
           cp -r html ./docs/docs/code
   deploy:
     runs-on: ubuntu-latest
@@ -60,12 +61,12 @@ jobs:
           restore-keys: |
             mkdocs-material-
       - run: |
-          cd docs
-            pip install mkdocs-material 
-            pip install mkdocs-glightbox
+          cd ./docs
+          pip install mkdocs-material 
+          pip install mkdocs-glightbox
       - run: |
-          cd docs
-            mkdocs gh-deploy --force
+          cd ./docs
+          mkdocs gh-deploy --force
     
 
 
