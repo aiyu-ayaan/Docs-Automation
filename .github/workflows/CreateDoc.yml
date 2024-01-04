@@ -52,6 +52,7 @@ jobs:
           name: mkdocs
       - name: Copy docs to doc/docs/code
         run: |
+          ls -la
           mkdir -p docs
           cp -r docs/* doc
           cp -r build/dokka/* doc/docs/code
