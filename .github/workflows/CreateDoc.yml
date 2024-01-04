@@ -50,12 +50,13 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: mkdocs
-      - name: Copy docs to doc/docs/code
+      - name: Copy docs
         run: |
           ls -la
           mkdir -p copyDoc/generated
           cp mkdocs.yml copyDoc/generated
-          cp -r docs/* copyDoc/generated
+          mkdir -p copyDoc/generated/docs
+          cp -r docs/* copyDoc/generated/docs
           mkdir -p copyDoc/generated/docs/code
           cp -r html/* copyDoc/generated/docs/code
           ls -la copyDoc
@@ -70,14 +71,6 @@ jobs:
     needs: copycode
     permissions: write-all
     steps:
-      - name: Download docs
-        uses: actions/download-artifact@v3
-        with:
-          name: copyDoc
-      - run: ls -la
-      - run: ls -la generated
-      - run: ls -la generated/code
-
       - uses: actions/checkout@v4
       - name: Configure Git Credentials
         run: |
@@ -93,8 +86,12 @@ jobs:
           path: .cache
           restore-keys: |
             mkdocs-material-
+
+      - name: Download docs
+        uses: actions/download-artifact@v3
+        with:
+          name: copyDoc
       - run: |
-          ls -la generated/code
           cd generated
           pip install mkdocs-material
           pip install mkdocs-glightbox
