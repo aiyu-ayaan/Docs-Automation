@@ -37,9 +37,7 @@ jobs:
           name: kt-docs
       - name: Copy docs to doc/docs/code
         run: |
-          ls -la 
-          cd ./ 
-          ls -la
+          ls -la ./  
           cp -r html/* ./docs/docs/code
     #  deploy:
     #    runs-on: ubuntu-latest
