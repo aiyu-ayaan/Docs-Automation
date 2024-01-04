@@ -1,9 +1,16 @@
 name: Generate Docs and Deploy to GitHub Pages
 
 on:
-  push:
-    branches:
-      - master
+  workflow_dispatch:
+    inputs:
+      stable:
+        description: 'Current App Stable Version'
+        required: true
+        default: 'v5.0.2'
+      pre_release:
+        description: 'Current App Pre-Release Version'
+        required: true
+        default: 'v5.0.3-beta'
 defaults:
   run:
     working-directory: .
@@ -91,6 +98,11 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: copyDoc
+      - name: Change Versopn
+        run: |
+          cd copyDoc/generated
+          sed -i 's/stable.+/stable: ${{ github.event.inputs.stable }}/g' mkdocs.yml
+          sed -i 's/pre_release:.+/pre_release: ${{ github.event.inputs.pre_release }}/g' mkdocs.yml
       - run: |
           cd generated
           pip install mkdocs-material

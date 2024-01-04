@@ -34,4 +34,6 @@ extra:
       link: https://www.instagram.com/aiyu.exe_
     - icon: fontawesome/brands/linkedin
       link: https://www.linkedin.com/in/aiyu/
-  unit_price: 1
+  version:
+    stable: v1
+    pre_release: v2
