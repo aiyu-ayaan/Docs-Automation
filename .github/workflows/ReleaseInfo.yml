@@ -14,7 +14,7 @@ jobs:
           GITHUB_TOKEN: ${{ github.token }}
         with:
           prerelease: true
-          tag: pre*
+          releaseId: 1
       - name: Print Details
         run: |
           echo ${{ steps.latest_release.outputs.tag_name }}
