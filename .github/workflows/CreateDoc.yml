@@ -98,5 +98,20 @@ jobs:
       - run: |
           cd generated
           mkdocs gh-deploy --force
+  delete-artifects:
+    runs-on: ubuntu-latest
+    permissions: write-all
+    needs: deploy
+    steps:
+      - uses: geekyeggo/delete-artifact@v4
+        with:
+          token: ${{ secrets.ACCOUNT_TOKEN }}
+          name: |
+            kt-docs
+            mkdocs
+            copyDoc
+
+
+
 
 
