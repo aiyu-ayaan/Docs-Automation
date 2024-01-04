@@ -9,13 +9,10 @@ jobs:
   Generated:
     runs-on: ubuntu-latest
     steps:
-      - name: Get latest release of NodeJS
-        uses: rez0n/actions-github-release@main
-        id: node_release
+      - id: fetch-latest-release
+        uses: thebritican/fetch-latest-release@v1
         with:
-          token: ${{ secrets.ACCOUNT_TOKEN }}
-          repository: "nodejs/node"
-          type: "stable"
-      - name: Get latest release of NodeJS
+          github_token: ${{ github.token }}
+      - name: Print Details
         run: |
-          echo ${{ steps.node_release.outputs.release }}
+          echo ${{ steps.fetch-latest-release.outputs.tag_name }}
