@@ -15,7 +15,7 @@ jobs:
         uses: InsonusK/get-latest-release@v1.0.1
         with:
           myToken: ${{ github.token }}
-          exclude_types: "release|draft"
+          exclude_types: "release"
           view_top: 1
 
       - name: "Print result"
