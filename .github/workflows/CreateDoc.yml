@@ -98,13 +98,12 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: copyDoc
-      - name: Change Versopn
-        run: |
-          cd copyDoc/generated
-          sed -i 's/stable.+/stable: ${{ github.event.inputs.stable }}/g' mkdocs.yml
-          sed -i 's/pre_release:.+/pre_release: ${{ github.event.inputs.pre_release }}/g' mkdocs.yml
       - run: |
           cd generated
+          cat mkdocs.yml
+          sed -i 's/stable.+/stable: ${{ github.event.inputs.stable }}/g' mkdocs.yml
+          sed -i 's/pre_release:.+/pre_release: ${{ github.event.inputs.pre_release }}/g' mkdocs.yml
+          cat mkdocs.yml
           pip install mkdocs-material
           pip install mkdocs-glightbox
           pip install mkdocs-markdownextradata-plugin
