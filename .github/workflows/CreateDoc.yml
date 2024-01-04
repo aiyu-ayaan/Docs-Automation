@@ -19,7 +19,9 @@ jobs:
       - name: Make gradlew executable
         run: chmod +x gradlew
       - name: Generate Dokka docs
-        run: ./gradlew dokkaHtml
+        run: |
+              ls -la
+            ./gradlew dokkaHtml
       - name: Upload docs
         uses: actions/upload-artifact@v2
         with:
