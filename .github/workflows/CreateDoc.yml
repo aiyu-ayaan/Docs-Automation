@@ -92,9 +92,12 @@ jobs:
       - name: Deploy to GitHub Pages
         run: |
           ls -la
+          cp generated/* docs
+          ls -la docs/code
           cd generated
+          ls -la
           pip install mkdocs-material
           pip install mkdocs-glightbox
-          mkdocs gh-deploy --force
+#          mkdocs gh-deploy --force
 
 
