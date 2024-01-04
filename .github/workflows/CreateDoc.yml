@@ -74,11 +74,6 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: copyDoc
-      - run: |
-          ls -la
-          cp -r generated/* docs
-          ls -la docs
-          ls -la docs/code
 
       - uses: actions/checkout@v4
       - name: Configure Git Credentials
@@ -96,12 +91,12 @@ jobs:
           restore-keys: |
             mkdocs-material-
       - run: |
-          ls -la docs/code
-          cd docs
+          ls -la generated/code
+          cd generated
           pip install mkdocs-material
           pip install mkdocs-glightbox
       - run: |
-          cd docs
+          cd generated
           mkdocs gh-deploy --force
 
 
