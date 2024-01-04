@@ -15,11 +15,11 @@ jobs:
         uses: InsonusK/get-latest-release@v1.0.1
         with:
           myToken: ${{ github.token }}
+          exclude_types: "release|draft"
           view_top: 1
 
       - name: "Print result"
         run: |
-          echo ${{ github.token }}
           echo "id: ${{ steps.last_release.outputs.id }}"
           echo "name: ${{ steps.last_release.outputs.name }}"
           echo "tag_name: ${{ steps.last_release.outputs.tag_name }}"
