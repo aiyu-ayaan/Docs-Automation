@@ -2,15 +2,6 @@ name: Release Info
 
 on:
   workflow_dispatch:
-    inputs:
-      stable:
-        description: 'Current App Stable Version'
-        required: true
-        default: 'v5.0.2'
-      pre_release:
-        description: 'Current App Pre-Release Version'
-        required: true
-        default: 'v5.0.3-beta'
 
 jobs:
   Generated:
@@ -21,7 +12,7 @@ jobs:
         id: last_release
         uses: InsonusK/get-latest-release@v1.0.1
         with:
-          myToken: ${{ github.token }}
+          myToken: ${{ github.ACCOUNT_TOKEN }}
           exclude_types: "release"
           view_top: 1
 
