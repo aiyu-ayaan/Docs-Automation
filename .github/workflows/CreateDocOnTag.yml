@@ -110,6 +110,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.ACCOUNT_TOKEN }}
       - run: |
           cd generated
+          echo ${{ github.ref }}
           echo "stable:${{ steps.latest_release.outputs.tag_name }}"
           echo "pre_release:${{ steps.pre_release.outputs.tag_name }}"
           sed -i -E "/stable.+/stable: $(echo ${{ github.ref }} | cut -c 11-) /" mkdocs.yml  

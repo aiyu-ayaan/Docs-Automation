@@ -3,7 +3,7 @@ name: Generate Docs and Deploy to GitHub Pages
 on:
   push:
     branches:
-      - master
+      - main
 defaults:
   run:
     working-directory: .
