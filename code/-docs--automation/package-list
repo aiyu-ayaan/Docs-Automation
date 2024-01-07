@@ -1,0 +1,18 @@
+$dokka.format:html-v1
+$dokka.linkExtension:html
+$dokka.location:org.atech////PointingToDeclaration/-docs--automation/org.atech/index.html
+$dokka.location:org.atech//happy/#/PointingToDeclaration/-docs--automation/org.atech/happy.html
+$dokka.location:org.atech//main/#/PointingToDeclaration/-docs--automation/org.atech/main.html
+$dokka.location:org.atech/Calculator///PointingToDeclaration/-docs--automation/org.atech/-calculator/index.html
+$dokka.location:org.atech/Calculator/add/#TypeParam(bounds=[kotlin.Number])#TypeParam(bounds=[kotlin.Number])/PointingToDeclaration/-docs--automation/org.atech/-calculator/add.html
+$dokka.location:org.atech/Calculator/divide/#TypeParam(bounds=[kotlin.Number])#TypeParam(bounds=[kotlin.Number])/PointingToDeclaration/-docs--automation/org.atech/-calculator/divide.html
+$dokka.location:org.atech/Calculator/multiply/#TypeParam(bounds=[kotlin.Number])#TypeParam(bounds=[kotlin.Number])/PointingToDeclaration/-docs--automation/org.atech/-calculator/multiply.html
+$dokka.location:org.atech/Calculator/subtract/#TypeParam(bounds=[kotlin.Number])#TypeParam(bounds=[kotlin.Number])/PointingToDeclaration/-docs--automation/org.atech/-calculator/subtract.html
+$dokka.location:org.atech/IntCalculator///PointingToDeclaration/-docs--automation/org.atech/-int-calculator/index.html
+$dokka.location:org.atech/IntCalculator/IntCalculator/#/PointingToDeclaration/-docs--automation/org.atech/-int-calculator/-int-calculator.html
+$dokka.location:org.atech/IntCalculator/add/#kotlin.Int#kotlin.Int/PointingToDeclaration/-docs--automation/org.atech/-int-calculator/add.html
+$dokka.location:org.atech/IntCalculator/divide/#kotlin.Int#kotlin.Int/PointingToDeclaration/-docs--automation/org.atech/-int-calculator/divide.html
+$dokka.location:org.atech/IntCalculator/multiply/#kotlin.Int#kotlin.Int/PointingToDeclaration/-docs--automation/org.atech/-int-calculator/multiply.html
+$dokka.location:org.atech/IntCalculator/subtract/#kotlin.Int#kotlin.Int/PointingToDeclaration/-docs--automation/org.atech/-int-calculator/subtract.html
+org.atech
+
