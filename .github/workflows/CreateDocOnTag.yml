@@ -111,10 +111,8 @@ jobs:
       - run: |
           cd generated
           echo ${{ github.ref }}
-          echo "stable:${{ steps.latest_release.outputs.tag_name }}"
-          echo "pre_release:${{ steps.pre_release.outputs.tag_name }}"
           sed -i -E "/stable.+/stable: $(echo ${{ github.ref }} | cut -c 11-) /" mkdocs.yml  
-          sed -i -E "s/pre_release.+/pre_release: $(echo ${{ steps.pre_release.outputs.tag_name }} | cut -c 13-) /" mkdocs.yml 
+          sed -i -E "/pre_release.+/pre_release: $(echo ${{ steps.pre_release.outputs.tag_name }} | cut -c 13-) /" mkdocs.yml 
           echo "stable: ${{ github.event.inputs.stable }}"
           echo "pre_release: ${{ github.event.inputs.pre_release }}"
           cat mkdocs.yml
